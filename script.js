@@ -6,6 +6,8 @@ var lowercase = [ 'a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm'
 
 var num = [ '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
+//adding prompts//
+
 var prompt = ('How many characters would you like your password to have?');
 
 var prompt = 
