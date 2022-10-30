@@ -5,6 +5,7 @@ document.querySelector('#generate').addEventListener('click',generateBtn)
 //Variable Arrays//
 
 var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+// console.log(uppercase); 
 
 var lowercase = [ 'a','b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
 
@@ -46,27 +47,40 @@ function generatePassword(){
 var useLower = confirm('Would you like to user lowercase letters in your password?');
 var useUpper = confirm('Would you like to include uppercase letters in your password?');
 var useNum = confirm('Would you like to include numbers in your password?');
-var userSpec = confirm('Would you like special characters in your password?');
+var useSpec = confirm('Would you like special characters in your password?');
 
 // THEN I confirm whether or not to include lowercase, uppercase, numeric, and/or special characters
 if (useLower === true) {
   console.log(useLower);
-} else if (!useLower) {
-  console.log(!useLower)
+} else (useLower === false)
+  console.log(useLower)
+
+if (useUpper === true) {
+  console.log(useUpper);
+} else (useUpper === false)
+  console.log(useUpper)
+
+if (useNum === true) {
+  console.log(useNum);
+} else (useNum === false)
+  console.log(useNum)  
+
+if (useSpec=== true) {
+  console.log(useSpec);
+} else (useSpec === false)
+  console.log(useSpec)  
+
+  return (useLower + useUpper + useNum + useSpec)
 }
-
-
 
 
 // WHEN I answer each prompt
 // THEN my input should be validated and at least one character type should be selected
+
 // WHEN all prompts are answered
 // THEN a password is generated that matches the selected criteria
 // WHEN the password is generated
 // THEN the password is either displayed in an alert or written to the page
-
-  return 'iH Lian!'
-}
 
 // Write password to the #password input
 function writePassword() {
