@@ -1,6 +1,11 @@
 // Assignment code here
+//Variable Arrays
+var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+var num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+var specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
 
-document.querySelector('#generate').addEventListener('click', generateBtn)
+
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -8,60 +13,62 @@ var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
 
-  //adding prompts for password criteria
-  // length of the password
+  var bigArray = [];
+  var finalPassword = [];
+
+  // Prompts for password criteria
+ 
   var userChoice = prompt('How many characters would you like your password to have?')
 
   var passLength = parseInt(userChoice)
 
-  console.log(userChoice);
-
-  if (userChoice < 8 || userChoice > 128) {
+  if (passLength < 8 || passLength > 128) {
     alert("Character count should be more than 8 and less than 128")
-
     return null;
   }
   // Confirms for character types to include in the password
   var useLower = confirm('Would you like to include lowercase letters in your password?');
-  console.log(useLower);
+
   var useUpper = confirm('Would you like to include uppercase letters in your password?');
-  console.log(useUpper);
+
   var useNum = confirm('Would you like to include numbers in your password?');
-  console.log(useNum);
+
   var useSpec = confirm('Would you like to include special characters in your password?');
-  console.log(useSpec);
+
+  if (useLower === false && useNum === false && useUpper === false && useSpec === false) {
+    alert("Please select one option!")
+    return null;
+  }
 
   if (useLower === true) {
-  } else (useLower === false);
+    bigArray = bigArray.concat(lowercase)
+  }
 
   if (useUpper === true) {
-
-  } else (useUpper === false);
+    bigArray = bigArray.concat(uppercase)
+  }
 
   if (useNum === true) {
-  } else (useNum === false);
+    bigArray = bigArray.concat(num)
+  }
 
   if (useSpec === true) {
-  } else (useSpec === false);
-
-
-  //Variable Arrays//
-  var uppercase = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
-  var lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  var num = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  var specialCharacters = ['!', '@', '#', '$', '%', '^', '&', '*', '(', ')']
-
-  var genpassword = [uppercase + lowercase + num + specialCharacters]
-
-  for (var i = 0; i < passLength.length; i++) {
-
+    bigArray = bigArray.concat(specialCharacters)
   }
-  // console.log(password);
+
+  //for loop 
+  for (var i = 0; i < passLength; i++) {
+    var randomChar = getRandomCharacter(bigArray)
+    finalPassword.push(randomChar)
+  }
+  
+  return finalPassword.join('')
 }
 
-// THEN a password is generated that matches the selected criteria
-// WHEN the password is generated
-// THEN the password is either displayed in an alert or written to the page
+function getRandomCharacter(array) {
+  
+  return array[Math.floor(Math.random() * array.length)]
+}
 
 // Write password to the #password input
 function writePassword() {
